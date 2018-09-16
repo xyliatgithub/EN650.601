@@ -1,4 +1,4 @@
-# EN650.601 Assignment 1 
+# EN650.601 Lab Assignment 1 
 
 ## Overview
 There are two hands-on experiments you are going to implement in this assignment. One is about an important web application security policy; while the other is an real-life attack if such policy is not enforced. Both of them are from [SEED Project](http://www.cis.syr.edu/~wedu/seed/index.html). It is strongly recommended that you do the Same Origin Policy Exploration lab first to become familiar with the lab environment and go through some computer network basics. It would be a lot more easier for you to do the Cross-Site Request Forgery Attack lab after you finish this one.
@@ -20,7 +20,7 @@ _--35 Points_
 ## Submission Instructions
 - This assignment is due on October 8th (Monday) 11:59 PM. 
 - You will work in a group for this assignment. We will discuss team selecting in class.
-- Submit your results for both of labs at BlackBoard in one PDF file.
-- Only one report is needed for a group. 
+- Submit your results for both labs at BlackBoard in one PDF file.
+- Only one report is needed from a group. 
 - Please list group members in your report explicitly. 
-- Please type. In general NO hand-written report is accepted.
+- Please type your solutions. In general NO hand-written report is accepted.
