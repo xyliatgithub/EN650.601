@@ -1,4 +1,4 @@
-# EN.650.401/601 Introduction to Information Security Fall, 2018
+# EN.650.401/601 Introduction to Information Security
 
 ## Meetings:
 Tuesday/Thursday, 1:30–2:45 PM
