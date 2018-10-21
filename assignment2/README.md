@@ -13,12 +13,12 @@ Complete tasks in the [lab manual](module1) and answer all questions. Since you 
 
 
 ## Certificate Authority Hierarchy (25 points)
-Follow the instructions in [lab manual](module2) and answer all questions. Still, you have to include screenshots from this module in the report. Please capture them periodically.
+Follow the instructions in the [lab manual](module2) and answer all questions. Still, you have to include screenshots for this module in the report. Please capture them periodically.
 
 
 ## Submission Instructions
-- This assignment is due on November 12nd (Monday) 11:59 PM. 
-- You will work in a group(to be discussed in class) for this assignment.
+- This assignment is due on November 12nd (Monday) by 11:59 PM. 
+- You will work in a group (to be discussed in class) for this assignment.
 - Submit your results for both modules at BlackBoard in one PDF file.
 - Only one report is needed from a group. 
 - Please list group members in your report explicitly. 
