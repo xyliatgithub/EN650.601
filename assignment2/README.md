@@ -6,7 +6,7 @@ To get you a grasp of how PKI works, this lab simulates the issuance, revocation
 
 
 ## Environment Setup
-For each lab module, you have to create a seperate slice in GENI, and reserve resources as decribed in lab manuals. After the resources are available, connect to those VMs through ssh and do the correspondent tasks. If you have difficulty setting up the environment, you might want to check out the [beginner's guide](http://groups.geni.net/geni/wiki/GENIExperimenter/Tutorials) for GENI.
+For each lab module, you have to create a seperate slice in GENI, and reserve resources as decribed in lab manuals. After the resources are available, connect to those VMs through ssh and do the correspondent tasks. If you have difficulty setting up the environment, please check out the [beginner's guide](http://groups.geni.net/geni/wiki/GENIExperimenter/Tutorials) for GENI.
 
 ## Certificate Issuance and Revocation (25 points)
 Complete tasks in the [lab manual](module1) and answer all questions. Since you are required to include screenshots in your report, it is suggested that you capture screenshots periodically.
