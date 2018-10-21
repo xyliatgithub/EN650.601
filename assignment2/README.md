@@ -13,7 +13,7 @@ Go through the [lab manual](module1), and complete all tasks listed on it. Since
 
 
 ## Certificate Authority Hierarchy (25 points)
-Go through the [lab manual](module2), and complete all tasks listed on it. Since you are required to include screenshots in your report, it is suggested that you capture screenshots periodically.
+Follow the instructions in [lab manual](module2) and answer all the questions. Still, you have to include screenshots from this module in the report. Please capture them periodically.
 
 
 ## Submission Instructions
