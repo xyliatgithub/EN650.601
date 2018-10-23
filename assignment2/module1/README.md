@@ -16,7 +16,6 @@
   Software packages used in this labs are listed as follows:
   - OpenSSL: This is a cryptographic toolkit for TLS/SSL, you will use it to generate public private key pairs and digital certificates.
   - LAMP: LAMP is a software bundle named after its software components, Linux operating system, Apache HTTP Server, MySQL database management system and PHP programming language. This bundle is commonly used when building dynamic websites, content of the website is not static, and web applications. It will be used to build your website. 
-  - cURL: This is a command-line tool for transferring data. You will use it to test the certificate validity.
 
 
 ## Network topology
@@ -24,7 +23,7 @@
 ![Alt text](pic/Picture101.png?raw=true "Title")
 
 
-Four VMs are needed in this lab. Node **ca** will be the certificate authority in this experiment. Node **ws** will be the web server in this experiment. It is the node that LAMP will be installed. Node **user** is where you launch your browser and connect to the website. Since some of the configurations requires knowledge about the IP addresses and port numbers of these nodes, they are summarized in the following table. It is strongly recommended that you write down such table for your own convenience.
+Four VMs are needed in this lab. Node **ca** will be the certificate authority. Node **ws** will be the web server, and it is the node that LAMP will be installed. Node **user** is where you launch your browser and connect to the website. Port numbers of these nodes are summarized in the following table. It is strongly recommended that you write down such table for your own convenience.
 
 Node Name    | Port Number
 ------------ | -------------
@@ -62,7 +61,7 @@ You will see three files under this directory.
 
 ### Certificate Authority Configuration
 
-Before this node can function as a certificate authority, some preparations need to be done. First, "index.txt", "newcerts", "crlnumber", and "serial" should be created in this directory.
+Before this node can function as a certificate authority, some preparations need to be done. First, "index.txt", "newcerts", "crlnumber", and "serial" should be created under this directory.
 
 ```sh
 /etc/ssl
@@ -108,7 +107,7 @@ crl             = $dir/crl.pem          # The current CRL
 private_key     = $dir/private/ca.key   # The private key
 RANDFILE        = $dir/private/.rand    # private random number file
 ```
-
+The modification is made for OpenSSL to find your certicicates and private key. Please put them to the specific directory after they are generated. 
 
 [ optional ] Change defaut values in line 129, 134, 139 and 146.
 
@@ -159,7 +158,7 @@ Fetching /etc/ssl/openssl.cnf to openssl.cnf
 /etc/ssl/openssl.cnf                                            100%   11KB 213.1KB/s   00:00  
 ```
 
-Once finishing editing files, use "put" to upload it. 
+Once you finish editing the configuration file, use "put" to upload it. If no specific directory is specified, the file will be put into its home directory. 
 
 ```sh
 sftp> put openssl.cnf
@@ -183,7 +182,7 @@ Now, the **ca** node can generate its private key and self-signed certificate. T
 sudo openssl genrsa -out /etc/ssl/private/ca.key 2048
 ```
 
-You can check whether the private key was generated succefully by listing files in "private." If everything went well, you will see a "cakey.pem" in it.
+Note that it is put in "private" as specified in the configuration file. You can check whether the private key was generated succefully by listing files in "private." If everything went well, you will see a "ca.key" in it.
 
 ```sh
 sudo ls /etc/ssl/private
@@ -195,7 +194,7 @@ Next, the command of creating self-signed certificate is:
 sudo openssl req -new -x509 -key /etc/ssl/private/ca.key -out /etc/ssl/ca.crt
 ```
 
-It will ask you to key in information such as country name and organizaton name. If you did modify default values in previous steps, just leave it blank if values inside those brackets are the same as your expectation. Note that no server will be setup on **ca** node, so you can set whatever common name you like. However, when it comes to **ws** node, the common name should be consistent with your configuration.
+In "openssl.cnf", the location of "ca.crt" is speicified as $dir, which is equivalent to "/etc/ssl" as stated in line 42. When generating certificates, it will ask you to key in information such as country name and organizaton name. If you did modify default values in previous steps, just leave it blank if values inside those brackets are the same as what you expect. Since no server will be setup on **ca** node, you can set whatever common name you like. However, the common name you set for **ws** later should be consistent with your configuration.
 
 ```sh
 root@ca:/etc/ssl# openssl req -new -x509 -key /etc/ssl/private/cakey.pem -out /etc/ssl/ca.crt
@@ -275,7 +274,7 @@ Fetching /etc/ssl/jhuws.csr to jhuws.csr
 sftp> 
 ```
 
-Then, setup another connection with the **ca** node. Note that you are not permitted to write to the "etc/ssl" on **ca** directly, thus it is easier to put it in "~" instead. It does not matter where you put the CSR file since the file location can be specified when signing it.
+Then, setup another connection with the **ca** node. Note that you are not permitted to write to the "etc/ssl" on **ca** directly, thus it is easier to put it in home directory instead. It does not matter where you put the CSR file since the file location can be specified when signing it.
 
 ```sh
 $ sftp -i ~/.ssh/id_geni_ssh_rsa -oPort=27642 yjou2@pc1.geni.it.cornell.edu
@@ -305,7 +304,7 @@ After CSR is transfered to the **ca** node, a certificate for **ws** can be gene
 sudo openssl ca -in <csr_location> -out <certificate_location> -days 3650
 ```
 
-If you used sftp to transfer CSR, it is probably located at "~", thus, the command should look like:
+If you used sftp to transfer CSR, it is probably located at the home directory, thus, the command should look like:
 
 ```sh
 sudo openssl ca -in ~/jhuws.csr -out ~/jhuws.crt -days 3650
@@ -508,7 +507,7 @@ Then, use
 ifconfig
 ```
 
-to find IP address, and modify "/etc/apache2/sites-enabled/default-ssl.conf" :
+to find IP address, and modify "/etc/apache2/sites-enabled/default-ssl.conf": In line 2, replace "_default_" with the IP address you just found. Do not remove “:443” after the IP addres. It is the port number for SSL connection. In line 4, insert a line and specify your ServerName. In line 32, 33, and 34, change the directory to where your certificate and private key are stored, and add a new line specifying SSLCertificateChainFile.
 
 
 ```sh
@@ -548,12 +547,13 @@ to find IP address, and modify "/etc/apache2/sites-enabled/default-ssl.conf" :
                 SSLCertificateKeyFile /etc/ssl/private/jhuws.key
 ```
 
-In line 2, replace "_default_" with the IP address you just found. Do not remove “:443” after the IP addres. It is the port number for SSL connection. In line 4, insert a line and specify your ServerName. In line 32, 33, and 34, change the directory to where your certificate and private key are stored, and add a new line specifying SSLCertificateChainFile.
+After it is modified, check whether the configuration is correct:
 
-Check whether the configuration is correct:
 ```
 apachectl configtest
 ```
+
+Use
 
 ```sh
 sudo a2enmod ssl
@@ -567,20 +567,7 @@ sudo service apache2 restart
 
 ## Certificate Issuance Test
 
-Now you can test the result of all the previous work by connecting web server from the **user** node. First, ssh the **user** node.
-
-
-### Curl
-
-Since browser on GENI run so slow that you will get crazy if you find you did something dumb, it is suggested to use Curl to test before you actually run a browser. To make your life easier, get into root environement to do the followings.
-
-```sh
-sudo su
-apt-get update
-apt-get install curl
-``` 
-
-When the installation is completed, modify the hosts file. It is the file that translates names of websites to IP addresses before the machine made a DNS request. To modify it, change the permission of this file
+Now you can test the result of all the previous work by connecting web server from the **user** node. First, ssh the **user** node. Then, modify the hosts file. It is the file that translates names of websites to IP addresses before the machine made a DNS request. To modify it, change the permission of this file
 
 ```sh
 sudo chmod 777 /etc/hosts
@@ -600,26 +587,11 @@ and edit it so that the server name "jhuws.edu" is mapped to the IP addresses.
 172.17.2.14     www.jhuws.edu
 ```
 
- 
-“172.17.2.14” is the IP address of **ws** node. And "jhuws.edu" is the server name set up before. After these changes are made, use
-
-```sh
-curl jhuws.edu
-```
-
-to see if normal connection works. If it returns a HTML response of our web server, the normal connection is successful. Next, try to include "ca.crt" when launching the connection
-
-```sh
-curl https://jhuws.edu --cacert ca.crt
-```
- 
-If the HTML reponse still appears, congratulations! You can step further to test through the openssl.
-
-Put "ca.crt" into /etc/ssl/certs on the user node, and create a symbolic link for it (more details of symbolic link can be found here).
+“172.17.2.14” is the IP address of **ws** node. And "jhuws.edu" should be the server name you set up before. After these changes are made, put "ca.crt" into /etc/ssl/certs on the **user** node, and create a symbolic link for it (more details of symbolic link can be found [here](http://gagravarr.org/writing/openssl-certs/others.shtml#ca-openssl)).
 ```
 ln -s ca.crt `openssl x509 -hash -noout -in ca.crt`.0
 ```
-Use openssl to test the connection.
+Finally, use openssl to test the connection.
 
 ```
 openssl s_client -showcerts -connect www.jhuws.edu:443
@@ -635,7 +607,7 @@ verify return:1
 
 ## Revoke a digital certificate
 
-Now, try to revoke the digital certificate. First, connect to the **ca** node and use this command to revoke the digital certificate. The default certificate name in this lab is “jhuws.crt”
+Now, try to revoke the digital certificate. First, connect to the **ca** node and use this command to revoke the digital certificate.
 
 ```sh
 sudo openssl ca -revoke jhuws.crt
@@ -672,22 +644,12 @@ Initially, the ”crlnumber” was set to "00". Everytime a certificate is revok
 
 ## Certificate Revocation Test
 
-Move the Certificate Revokation List, "ca.crl," to the **user** node. 
-
-### CURL
-
-Then, try to connect to the **ws** node with curl. Note that the CRL is included this time. 
-
-```sh
-curl https://jhuws.edu --cacert ca.crt --crlfile ca.crl
-```
- 
-You will see there's an error complaining the certificate was revoked. 
-
-### OpenSSL
+Move the Certificate Revokation List, "ca.crl," to the **user** node, and test the connection
 ```
 openssl s_client -showcerts -connect www.jhuws.edu:443
 ```
+You will see there's an error complaining the certificate was revoked.
+
 ## Assignments
 
 1. Google announces to mark the sites without HTTPS in chrome as non-secure by the end of January 2017, which means HTTPS is now mandatory for secure data in chrome. What’s the reason for Google to do so?
@@ -696,4 +658,4 @@ openssl s_client -showcerts -connect www.jhuws.edu:443
 
 3. X.509 is a popular SSL digital certificate standard, what content is included in the digital certificate in X.509 standard? Check the content in our digital certificate, screen shot it.
 
-
+4. Use OpenSSL's "s_client" to test the certication of a public known website. For example, Google, Amazon, Linkedin, etc. Include the result in your report and describe your observation. 
