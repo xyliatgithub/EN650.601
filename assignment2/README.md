@@ -9,11 +9,11 @@ To get you a grasp of how PKI works, this lab simulates the issuance, revocation
 For each lab module, you have to create a seperate slice in GENI, and reserve resources as decribed in lab manuals. After the resources are available, connect to those VMs through ssh and do the correspondent tasks. If you have difficulty setting up the environment, please refer to the [beginner's guide](http://groups.geni.net/geni/wiki/GENIExperimenter/Tutorials) for GENI.
 
 ## Certificate Issuance and Revocation (25 points)
-Complete tasks in the [lab manual](module1) and answer all questions. Since you are required to include screenshots in your report, it is suggested that you capture screenshots periodically.
+Complete tasks in the [lab manual](module1) and answer all questions. Use your team name(initials of your team members) instead of "jhuws" in the instructions. Since you are required to include screenshots in your report, it is suggested that you capture screenshots periodically.
 
 
 ## Certificate Authority Hierarchy (25 points)
-Follow the instructions in the [lab manual](module2) and answer all questions. Still, you have to include screenshots for this module in the report. Please capture them periodically.
+Follow the instructions in the [lab manual](module2) and answer all questions. Use your team name(initials of your team members) instead of "jhuws" in the instructions. Still, you have to include screenshots for this module in the report. Please capture them periodically.
 
 
 ## Submission Instructions
