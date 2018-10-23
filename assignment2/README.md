@@ -22,5 +22,6 @@ Follow the instructions in the [lab manual](module2) and answer all questions. S
 - Submit your results for both modules at BlackBoard in one PDF file.
 - Only one report is needed from a group. 
 - Please list group members in your report explicitly. 
-- Please type your solutions and include screenshots. In general NO hand-written report is accepted.
+- Please type your solutions. In general NO hand-written report is accepted.
+- Use your team name(initials of your team members) instead of "jhuws" in the assignment and include screeshots for each sections in your report .
 
