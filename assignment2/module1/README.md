@@ -16,6 +16,7 @@
   Software packages used in this labs are listed as follows:
   - OpenSSL: This is a cryptographic toolkit for TLS/SSL, you will use it to generate public private key pairs and digital certificates.
   - LAMP: LAMP is a software bundle named after its software components, Linux operating system, Apache HTTP Server, MySQL database management system and PHP programming language. This bundle is commonly used when building dynamic websites, content of the website is not static, and web applications. It will be used to build your website. 
+  - cURL: This is a command-line tool for transferring data. You will use it to test the certificate validity.
 
 
 ## Network topology
@@ -644,9 +645,9 @@ Initially, the ”crlnumber” was set to "00". Everytime a certificate is revok
 
 ## Certificate Revocation Test
 
-Move the Certificate Revokation List, "ca.crl," to the **user** node, and test the connection
+Move the Certificate Revokation List, "ca.crl," to the **user** node. Since OpenSSL does not support CRL funtion although command like "-CRL" or "-CRLform" do exist, test the connection with curl. Note that CRL is included this time.
 ```
-openssl s_client -showcerts -connect www.jhuws.edu:443
+curl https://jhuws.edu --cacert ca.crt --crlfile ca.crl
 ```
 You will see there's an error complaining the certificate was revoked.
 
