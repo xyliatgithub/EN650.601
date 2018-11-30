@@ -1,4 +1,5 @@
 # EN650.601 Lab Assignment 3
+## (50 points)
 
 ## Introduction
 Since the advent of Bitcoin, there have been lots of blockchain frameworks and implementations invented. Generally, they fall into two categories, one is the permission ( private ) blockchain, and the other is the public blockchains. The permission blockchains only allow authorized people to join, while public blockchains allow anyone to be its member. This is the most prevailing way that people classify blockchains. 
