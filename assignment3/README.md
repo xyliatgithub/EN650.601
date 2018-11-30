@@ -22,7 +22,7 @@ In this lab, you will try to build a certificate management application using sm
 ## Submission Instructions
 - This assignment is due on December 17th (Monday) by 11:59 PM. 
 - You will work in a group (to be discussed in class) for this assignment.
-- Pick either one of the module and Submit your result at BlackBoard in one PDF file.
+- Pick either one of the two modules and Submit your result at BlackBoard in one PDF file.
 - Include your opinion(1 - 2 paragraph) on the debate aforementtioned in your report.
 - Only one report is needed from a group. 
 - Please list group members in your report explicitly. 
