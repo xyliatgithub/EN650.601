@@ -288,7 +288,7 @@ Similar to the example above, "query.js" is used to get data out of the blockcha
 
 
 ## Exercises
-1. As an exercise, shall we be using query.js or invoke.js to create requests for ‘queryCert’, ‘createCert’, and ‘revokeCert’?
-2. As an exercise, create a new certificate and demonstrate that you can retrieve that certificate.
+1. Demonstrate how to use these functions: ‘queryCert’, ‘createCert’, and ‘revokeCert’.
+2. Create a new certificate and demonstrate that you can retrieve that certificate.
 3. As an exercise, revoke your previously created certificate.
 4. Consider a scenario in which you rely on this blockchain to manage all your trusted root certificates. You have shut off your computer and at this time, a certificate has been revoked and a new one has been created and placed on the blockchain in its place. Now, you restart your computer. Will you be able to connect to this server immediately upon restart? Why or why not? 
