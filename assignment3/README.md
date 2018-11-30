@@ -3,7 +3,7 @@
 ## Introduction
 Since the advent of Bitcoin, there have been lots of blockchain frameworks and implementations invented. Generally, they fall into two categories, one is the permission ( private ) blockchain, and the other is the public blockchains. The permission blockchains only allow authorized people to join, while public blockchains allow anyone to be its member. This is the most prevailing way that people classify blockchains. 
 
-However, some people are not satisfied with this categorization because they think a permission blockchain is not even a real "blockchain". The trust is no more decentralized and transparent, and it is hard to find any difference between permission blockchains and decentralized database. 
+A Debate - However, some people are not satisfied with this categorization because they think a permission blockchain is not even a real "blockchain". The trust is no more decentralized and transparent, and it is hard to find any difference between permission blockchains and decentralized database. 
 
 In this lab, you are going to explore either Bitcoin or Hyperledger Fabric, a private blockchain framework implementation, and provide your opinions on this debate. Read the following two lab instructions and make your decision.
 
