@@ -44,6 +44,7 @@ In addition to Internet access, you need a personal computer or access to a comp
 - Security Models
 - Cryptography
 - Physical and Operation Security
+- Human Factors in Information Security
 - Access Control
 - Network Security
 - Intrusion Detection
@@ -56,6 +57,7 @@ This course aims at the development of three capabilities, i.e. understanding of
 - Quizzes (25%) – A set of quizzes on understanding of basic concepts and technologies. All the quizzes require written answers by individual students in class. No computational aids and Internet access are allowed.
 - Homework (50%) – A set of assignments to be fulfilled individually or in groups as specified. These assignments include answers to questions, reading papers, problem solving, as well as exercises that may require hands-on interaction with computers. Only typed or electronic reports (hand drawing okay for figures if necessary and legible) are allowed for homework and term project.
 - Class Project (25%) – A few reports (proposal/review/report) to be developed on selected security topics/issues and solutions, by student teams of up to three members. The project includes presentations in class. Detailed class project guidelines will be given out.
+
 A letter grade will be assigned according to this formula: A - 85% and above; B - 70% to 84%; C - 60% to 69%; D - 50% to 59%; F - less than 50%. Appropriate upward curving will be made as necessary.
 
 ## Ethics
@@ -67,10 +69,12 @@ If your instructor permits using fragments of source code from outside sources, 
 Falsifying program output or results is prohibited.
 Your instructor is free to override parts of this policy for particular assignments. To protect yourself: (1) Ask the instructor if you are not sure what is permissible. (2) Seek help from the instructor, TA or CAs, as you are always encouraged to do, rather than from other students. (3) Cite any questionable sources of help you may have received.
 On every exam, you will have to agree to the following pledge: "I agree to complete this exam without unauthorized assistance from any person, materials or device." Your course instructors will let you know where to find copies of old exams, if they are available.
+
 __In addition, the specific ethics guidelines for this course are:
 (1) Be regular; do not fall behind on class materials. No make-up assignments will be offered. If you should be late on an assignment, please obtain prior arrangement with the instructor.
 (2) Collaboration is not allowed for individual assignments and exams. Discussion and collaboration is encouraged in team-based assignments in which every student is expected to contribute equally.
 (3) Highly ethical behavior is expected when using computing tools and techniques especially when working at on-campus or remote computing facilities.__
+
 Report any violations you witness to the instructor.
 You can find more information about university misconduct policies on the web at these sites:
 - For undergraduates: http://e-catalog.jhu.edu/undergrad-students/student-life-policies/
